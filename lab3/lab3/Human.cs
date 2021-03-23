@@ -4,6 +4,17 @@ using System.Linq;
 
 namespace HumanProject
 {
+    enum Genders
+    {
+        Male,
+        Female
+    }
+    enum Educations
+    {
+        PrimarySchool,
+        HighSchool,
+        University
+    }
     class Human
     {
         private static int numberOfId;

@@ -2,17 +2,6 @@
 
 namespace HumanProject
 {
-    enum Genders
-    {
-        Male,
-        Female
-    }
-    enum Educations
-    {
-        PrimarySchool,
-        HighSchool,
-        University
-    }
     class Program
     {
         static void Main(string[] args)
