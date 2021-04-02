@@ -26,18 +26,10 @@ namespace HumanProject
         {
             get
             {
-                if (index >= NumberOfHumans && index < 0)
-                {
-                    throw new Exception("There is no such index\n");
-                }
                 return humanList[index];
             }
             set
             {
-                if (index >= NumberOfHumans && index < 0)
-                {
-                    throw new Exception("There is no such index\n");
-                }
                 humanList[index] = value;
             }
         }
