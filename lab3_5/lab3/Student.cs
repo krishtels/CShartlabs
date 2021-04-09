@@ -147,6 +147,7 @@ namespace HumanProject
         {
             NumberOfRetakes = 0;
             Grants = GrantsList.High;
+            Console.WriteLine("Working hard");
         }
         public double AveragePoint { get; private set; }
         public void CalculateAverageMarks()

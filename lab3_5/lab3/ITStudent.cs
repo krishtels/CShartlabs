@@ -90,7 +90,7 @@ namespace HumanProject
             }
             if (mark > 5)
             {
-                ProgrammingLevel++;
+                ProgrammingLevel+=3;
             }
             return mark;
         }

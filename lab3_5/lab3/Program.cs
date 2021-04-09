@@ -11,7 +11,7 @@ namespace HumanProject
             Philologist philo = new Philologist("Tutov", "Pasha", "-");
             Student stud = new ArtStudent("Fulloc", "Nasa", "-");
             Student programmerAnother = new ITStudent("Ded", "Lesha", "Anatolievich", Student.Universities.BSU, Student.Degrees.Postgraduate, new DateTime(1999, 1, 16), Genders.Male, Educations.University);
-            Human justHuman = new Philologist("Goga", "Faina", "-");
+            Student justHuman = new Philologist("Goga", "Faina", "-");
             prog.SetPerformance();
             prog.PassSession();
             Console.WriteLine(prog);
@@ -19,8 +19,11 @@ namespace HumanProject
             philo.PassSession();
             Console.WriteLine(philo);
             Console.WriteLine(philo.SocialSkills);
-            stud.GetExpelled();
             Console.WriteLine(stud);
+            stud.WorkHard();
+            programmerAnother.WorkHard();
+            justHuman.WorkHard();
+            Console.WriteLine(first);
             Console.ReadKey();
         }
     }
