@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HumanProject
 {
@@ -11,7 +12,7 @@ namespace HumanProject
             Philologist philo = new Philologist("Tutov", "Pasha", "-");
             Student stud = new ArtStudent("Fulloc", "Nasa", "-");
             Student programmerAnother = new ITStudent("Ded", "Lesha", "Anatolievich", Student.Universities.BSU, Student.Degrees.Postgraduate, new DateTime(1999, 1, 16), Genders.Male, Educations.University);
-            Student justHuman = new Philologist("Goga", "Faina", "-");
+            Human justHuman = new Philologist("Goga", "Faina", "-");
             prog.SetPerformance();
             prog.PassSession();
             Console.WriteLine(prog);
@@ -19,11 +20,19 @@ namespace HumanProject
             philo.PassSession();
             Console.WriteLine(philo);
             Console.WriteLine(philo.SocialSkills);
+            stud.GetExpelled();
             Console.WriteLine(stud);
-            stud.WorkHard();
-            programmerAnother.WorkHard();
-            justHuman.WorkHard();
-            Console.WriteLine(first);
+            Console.ReadKey();
+
+            Human firstHuman = new Human("Abram", "Oleg");
+            Human secondHuman = new Human("Aamov", "Vitta");
+            Human thirdHuman = new Human("Emoloc", "Domer");
+            List<Human> people = new List<Human> { firstHuman, secondHuman, thirdHuman };
+            people.Sort();
+            foreach(Human hum in people)
+            {
+                Console.WriteLine(hum);
+            }
             Console.ReadKey();
         }
     }

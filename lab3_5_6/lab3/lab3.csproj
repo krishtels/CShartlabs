@@ -46,6 +46,8 @@
     <Compile Include="ArtStudent.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="Humans.cs" />
+    <Compile Include="ICreator.cs" />
+    <Compile Include="IRelax.cs" />
     <Compile Include="ITStudent.cs" />
     <Compile Include="Philologist.cs" />
     <Compile Include="Program.cs" />

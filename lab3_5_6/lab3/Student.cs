@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HumanProject
 {
-    abstract class Student : Human
+    abstract class Student : Human, IComparable<Student>, IRelax
     {
         public Student(string surname, string name, string middlename, Universities university, Degrees degree):base(surname, name, middlename)
         {
@@ -127,15 +127,18 @@ namespace HumanProject
             if (NumberOfRetakes > 3)
             {
                 GetExpelled();
+                IsHappy = false;
             }
             else
             {
                 PassSession();
+                IsHappy = true;
             }
         }
         public void GetExpelled()
         {
             IsExpelled = true;
+            IsHappy = false;
             University = Universities.None;
             SeccionMarks.Clear();
         }
@@ -147,7 +150,6 @@ namespace HumanProject
         {
             NumberOfRetakes = 0;
             Grants = GrantsList.High;
-            Console.WriteLine("Working hard");
         }
         public double AveragePoint { get; private set; }
         public void CalculateAverageMarks()
@@ -179,6 +181,31 @@ namespace HumanProject
                 result += "Average point: " + AveragePoint + '\n' + "Performance " + Performance + '\n';
             }
             return result;
+        }
+        public int CompareTo(Student other)
+        {
+            if (AveragePoint > other.AveragePoint)
+                return 1;
+            else if (AveragePoint < other.AveragePoint)
+                return -1;
+            else
+                return 0;
+        }
+        public void DoSport()
+        {
+            IsHappy = true;
+            WorkHard();
+            Console.WriteLine("You are running");
+        }
+        public void Read()
+        {
+            Study();
+            Console.WriteLine("You are reading");
+        }
+        public void HaveFun()
+        {
+            IsHappy = true;
+            Console.WriteLine("You are happy right now");
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HumanProject
 {
-    class ITStudent : Student
+    class ITStudent : Student, ICreator
     {
         public ITStudent() : this("Unknown", "Unknown", "Unknown") { }
         public ITStudent(string surname, string name, string middlename, Universities university, Degrees degree, DateTime dateOfBirth, Genders gender = Genders.Male, Educations education = Educations.HighSchool) : base(surname, name, middlename, university, degree, dateOfBirth, gender, education)
@@ -90,7 +90,7 @@ namespace HumanProject
             }
             if (mark > 5)
             {
-                ProgrammingLevel+=3;
+                ProgrammingLevel++;
             }
             return mark;
         }
@@ -124,6 +124,36 @@ namespace HumanProject
             result += "Specialization: Programmer" + '\n' + "Diploma: " + WriteDiploma() + '\n';
             result += "Grant " + Grants + '\n';
             return result;
+        }
+        private readonly List<string> masterpieces = new List<string>()
+        {
+            "Linux", "Instagram", "Web page", "Java project", "compiler for C#", "Facebook", "C++",
+            "BitTorrent protocol", "JavaScript project", "New game"
+        };
+        public string CreateMasterpiece()
+        {
+            Random rand = new Random();
+            int number = rand.Next(0, masterpieces.Count);
+            Console.WriteLine("You create a masterpiece called " + masterpieces[number]);
+            if (rand.Next(0, 2) == 1)
+            {
+                Success();
+            }
+            else
+            {
+                Fiasco();
+            }
+            return masterpieces[number];
+        }
+        public void Fiasco()
+        {
+            IsHappy = false;
+            Console.WriteLine("Your masterpiece is awful. Program doesn't work properly");
+        }
+        public void Success()
+        {
+            IsHappy = true;
+            Console.WriteLine("Your masterpiece is wonderful. Program works properly");
         }
     }
 }

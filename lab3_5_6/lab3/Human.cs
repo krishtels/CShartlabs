@@ -14,7 +14,7 @@ namespace HumanProject
         HighSchool,
         University
     }
-    class Human
+    class Human : IComparable<Human>
     {
         protected static int numberOfId;
         public int Id { get; }
@@ -24,6 +24,8 @@ namespace HumanProject
         public DateTime DateOfBirth { get; set; }
         public double Weight { get; set; }
         public double Height { get; set; }
+        public bool IsHappy { get; protected set; }
+
         public int Age
         {
             get
@@ -53,6 +55,7 @@ namespace HumanProject
             Adress = adress;
             Mother = mother;
             Father = father;
+            IsHappy = true;
             if (Mother != null)
             {
                 Mother.AddChild(this);
@@ -194,6 +197,10 @@ namespace HumanProject
             }
             result += "Adress: " + Adress + '\n';
             return result;
+        }
+        public int CompareTo(Human other)
+        {
+            return String.Compare(Surname, other.Surname);
         }
     }
 }

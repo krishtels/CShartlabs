@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HumanProject
 {
-    class ArtStudent : Student
+    class ArtStudent : Student, ICreator
     {
         public ArtStudent() : this("Unknown", "Unknown", "Unknown") { }
         public ArtStudent(string surname, string name, string middlename, bool talent, Universities university, Degrees degree, DateTime dateOfBirth, Genders gender = Genders.Male, Educations education = Educations.HighSchool) : base(surname, name, middlename, university, degree, dateOfBirth, gender, education)
@@ -126,6 +126,42 @@ namespace HumanProject
             result += "Specialization: Art" + '\n' + "Diploma: " + WriteDiploma() + '\n';
             result += "Grant " + Grants + '\n';
             return result;
+        }
+        private readonly List<string> masterpieces = new List<string>()
+        {
+        "Mona Lisa", "Girl with a Pearl Earring",
+        "The Birth of Venus", "The Starry Night",
+        "The Scream", "The Arnolfini Portrait",
+        "The Garden of Earthly Delights",
+        "The Creation Of Adam", "The Ninth Wave",
+        "Napoleon Crossing The Alps"
+        };
+        public string CreateMasterpiece()
+        {
+            Random rand = new Random();
+            int number = rand.Next(0, masterpieces.Count);
+            Console.WriteLine("You draw a masterpiece called " + masterpieces[number]);
+            if (rand.Next(0, 2) == 1 || Talented)
+            {
+                Success();
+            }
+            else
+            {
+                Fiasco();
+            }
+            return masterpieces[number];
+        }
+
+        public void Fiasco()
+        {
+            IsHappy = false;
+            Console.WriteLine("Your picter is awful");
+        }
+
+        public void Success()
+        {
+            IsHappy = true;
+            Console.WriteLine("Your masterpiece is wonderful. You became famous artist");
         }
     }
 }
