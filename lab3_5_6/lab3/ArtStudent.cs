@@ -140,7 +140,7 @@ namespace HumanProject
         {
             Random rand = new Random();
             int number = rand.Next(0, masterpieces.Count);
-            Console.WriteLine("You draw a masterpiece called " + masterpieces[number]);
+            Console.WriteLine(this.Name + " draw a masterpiece called " + masterpieces[number]);
             if (rand.Next(0, 2) == 1 || Talented)
             {
                 Success();
@@ -155,13 +155,13 @@ namespace HumanProject
         public void Fiasco()
         {
             IsHappy = false;
-            Console.WriteLine("Your picter is awful");
+            Console.WriteLine(this.Name + " picter is awful");
         }
 
         public void Success()
         {
             IsHappy = true;
-            Console.WriteLine("Your masterpiece is wonderful. You became famous artist");
+            Console.WriteLine(this.Name + " masterpiece is wonderful. You became famous artist");
         }
     }
 }

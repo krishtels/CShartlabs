@@ -134,7 +134,7 @@ namespace HumanProject
         {
             Random rand = new Random();
             int number = rand.Next(0, masterpieces.Count);
-            Console.WriteLine("You create a masterpiece called " + masterpieces[number]);
+            Console.WriteLine(this.Name + " create a masterpiece called " + masterpieces[number]);
             if (rand.Next(0, 2) == 1)
             {
                 Success();
@@ -148,12 +148,12 @@ namespace HumanProject
         public void Fiasco()
         {
             IsHappy = false;
-            Console.WriteLine("Your masterpiece is awful. Program doesn't work properly");
+            Console.WriteLine(this.Name + " masterpiece is awful. Program doesn't work properly");
         }
         public void Success()
         {
             IsHappy = true;
-            Console.WriteLine("Your masterpiece is wonderful. Program works properly");
+            Console.WriteLine(this.Name + " masterpiece is wonderful. Program works properly");
         }
     }
 }

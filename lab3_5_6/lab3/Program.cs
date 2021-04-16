@@ -33,6 +33,12 @@ namespace HumanProject
             {
                 Console.WriteLine(hum);
             }
+
+            ICreator creator = prog;
+            creator.CreateMasterpiece();
+            IRelax relaxing = stud;
+            relaxing.DoSport();
+            relaxing.HaveFun();
             Console.ReadKey();
         }
     }

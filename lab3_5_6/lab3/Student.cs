@@ -195,17 +195,17 @@ namespace HumanProject
         {
             IsHappy = true;
             WorkHard();
-            Console.WriteLine("You are running");
+            Console.WriteLine(this.Name + " is running");
         }
         public void Read()
         {
             Study();
-            Console.WriteLine("You are reading");
+            Console.WriteLine(this.Name + " is reading");
         }
         public void HaveFun()
         {
             IsHappy = true;
-            Console.WriteLine("You are happy right now");
+            Console.WriteLine(this.Name + " is happy right now");
         }
     }
 }
