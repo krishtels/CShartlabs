@@ -388,7 +388,7 @@ namespace lab7
         {
             return fract.ToSingle(null);
         }
-        public static explicit operator double(Fraction fract)
+        public static implicit operator double(Fraction fract)
         {
             return fract.ToDouble(null);
         }
