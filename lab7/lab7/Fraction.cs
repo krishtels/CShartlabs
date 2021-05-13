@@ -396,6 +396,5 @@ namespace lab7
         {
             return fract.ToDecimal(null);
         }
-
     }
 }
