@@ -16,6 +16,12 @@ namespace HumanProject
     }
     class Human : IComparable<Human>
     {
+        public delegate void PrintMethod(string message);
+        public delegate void SameSexMarriageHandler(Genders gender);
+        static public event SameSexMarriageHandler SameSexMarriageEvent;
+        public delegate void DivorceHandler();
+        static public event DivorceHandler DivorceEvent;
+
         protected static int numberOfId;
         public int Id { get; }
         public string Name { get; set; }
@@ -25,7 +31,6 @@ namespace HumanProject
         public double Weight { get; set; }
         public double Height { get; set; }
         public bool IsHappy { get; protected set; }
-
         public int Age
         {
             get
@@ -34,6 +39,7 @@ namespace HumanProject
             }
         }
         public string Adress { get; set; }
+        public Human Partner { get; private set; }
         public Educations Education { get; set; }
         public Genders Gender { get; set; }
         public Human Mother { get; private set; }
@@ -56,6 +62,7 @@ namespace HumanProject
             Mother = mother;
             Father = father;
             IsHappy = true;
+            Partner = null;
             if (Mother != null)
             {
                 Mother.AddChild(this);
@@ -106,17 +113,42 @@ namespace HumanProject
         }
         public void AddChild(Human child)
         {
-            if (child != null)
+            if (child == null)
             {
-                Children.Add(child);
+                throw new ArgumentException("child doesn't exist\n");
             }
+            Children.Add(child);   
         }
+        public bool Marriage(Human another)
+        {
+            if (Gender == another.Gender)
+            {
+                SameSexMarriageEvent?.Invoke(Gender);
+                return false;
+            }
+            Partner = another;
+            another.Partner = this;
+            return true;
+        }
+
+        public void Divorce()
+        {
+            if (Partner == null)
+            {
+                throw new ArgumentException("You have no partner");
+            }
+            Partner.Partner = null;
+            Partner = null;
+            DivorceEvent?.Invoke();
+        }
+
         public void RemoveChild(Human child)
         {
-            if (child != null)
+            if (child == null)
             {
-                Children.Remove(child);
+                throw new ArgumentException("child doesn't exist\n");
             }
+            Children.Remove(child);
         }
         public void SetParent(Human parent)
         {
@@ -202,5 +234,17 @@ namespace HumanProject
         {
             return String.Compare(Surname, other.Surname);
         }
+        virtual public void GetInfo(PrintMethod printMethod)
+        {
+            try
+            {
+                printMethod.Invoke(ToString());
+            }
+            catch
+            {
+                Console.WriteLine("Your PrintMethos is not valid");
+            }
+        }
+
     }
 }

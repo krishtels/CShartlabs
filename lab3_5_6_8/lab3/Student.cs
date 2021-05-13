@@ -172,16 +172,7 @@ namespace HumanProject
             University = university;
             SeccionMarks.Clear();
         }
-        public override string ToString()
-        {
-            string result = base.ToString();
-            result += "University:  " + University + '\n' + "Degree:  " + Degree + '\n';
-            if (SeccionMarks.Count > 0)
-            {
-                result += "Average point: " + AveragePoint + '\n' + "Performance " + Performance + '\n';
-            }
-            return result;
-        }
+        public override string ToString() => base.ToString() + $"University: {University}\nDegree: {Degree}\nAverage point: {AveragePoint}\nPerformance: {Performance}";
         public int CompareTo(Student other)
         {
             if (AveragePoint > other.AveragePoint)
@@ -206,6 +197,19 @@ namespace HumanProject
         {
             IsHappy = true;
             Console.WriteLine(this.Name + " is happy right now");
+        }
+        override public void GetInfo(PrintMethod printMethod)
+        {
+            printMethod(ToString());
+        }
+        public delegate void Business();
+        public event Business Plan;
+        public void DoBusiness()
+        {
+            Console.WriteLine($"{Name} try to do business...");
+            Plan?.Invoke();
+            Grants = GrantsList.Elevated;
+            WorkHard();
         }
     }
 }

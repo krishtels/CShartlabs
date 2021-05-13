@@ -128,12 +128,6 @@ namespace HumanProject
                 return false;
             }
         }
-        override public string ToString()
-        {
-            string result = base.ToString();
-            result += "Specialization: Philologist" + '\n' + "Diploma: " + WriteDiploma() + '\n';
-            result += "Grant " + Grants + '\n';
-            return result;
-        }
+        override public string ToString() => base.ToString() + $"Specialization: Philologist\nDiploma: {WriteDiploma()}\nGrant: {Grants}";
     }
 }

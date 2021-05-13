@@ -26,6 +26,10 @@ namespace HumanProject
         {
             get
             {
+                if (index < 0 && index >= humanList.Count)
+                {
+                    throw new Exception("There is no person with such index\n");
+                }
                 return humanList[index];
             }
             set

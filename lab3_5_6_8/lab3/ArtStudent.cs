@@ -120,13 +120,7 @@ namespace HumanProject
                 return false;
             }
         }
-        override public string ToString()
-        {
-            string result = base.ToString();
-            result += "Specialization: Art" + '\n' + "Diploma: " + WriteDiploma() + '\n';
-            result += "Grant " + Grants + '\n';
-            return result;
-        }
+        override public string ToString() => base.ToString() + $"Specialization: Art\nDiploma: {WriteDiploma()}\nGrant: {Grants}";
         private readonly List<string> masterpieces = new List<string>()
         {
         "Mona Lisa", "Girl with a Pearl Earring",

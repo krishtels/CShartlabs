@@ -118,13 +118,7 @@ namespace HumanProject
             LearnProgrammingLanguage();
             Console.WriteLine("Learning to programming");
         }
-        override public string ToString()
-        {
-            string result = base.ToString();
-            result += "Specialization: Programmer" + '\n' + "Diploma: " + WriteDiploma() + '\n';
-            result += "Grant " + Grants + '\n';
-            return result;
-        }
+        override public string ToString() => base.ToString()+ $"Specialization: Programmer\nDiploma: {WriteDiploma()}\nGrant: {Grants}";
         private readonly List<string> masterpieces = new List<string>()
         {
             "Linux", "Instagram", "Web page", "Java project", "compiler for C#", "Facebook", "C++",
